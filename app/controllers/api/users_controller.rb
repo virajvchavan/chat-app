@@ -1,10 +1,11 @@
 class Api::UsersController < ApplicationController
+  protect_from_forgery with: :null_session
   def index
     render json: User.all.as_json(only: [:id, :username])
   end
 
   def create
-    user = User.new(params[:id])
+    user = User.new(username: params[:username])
     if user.save
       render json: { message: 'saved user' }
     else
