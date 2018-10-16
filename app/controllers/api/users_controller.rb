@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
   def send_message
     user = User.find(params[:id])
     receiver = User.find(params[:receiver_id])
-    Message.create(from: @user, to: receiver, content: params[:content])
+    Message.create(from: user, to: receiver, content: params[:content])
     render json: { message: 'message sent!' }
   end
 
