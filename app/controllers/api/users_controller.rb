@@ -15,7 +15,7 @@ class Api::UsersController < ApplicationController
 
   def messages
     user = User.find(params[:id])
-    render json: user.all_messages
+    render json: user.all_messages(params[:other_user_id])
   end
 
   def send_message

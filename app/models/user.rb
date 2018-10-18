@@ -15,8 +15,10 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :username, uniqueness: true
 
-  def all_messages
-    (sent_messages + received_messages).sort_by {|m| m[:created_at]}
+  def all_messages(other_user_id)
+    # yeah i'm lazy
+    (sent_messages.where(from_id: other_user_id) + sent_messages.where(to_id: other_user_id) +
+      received_messages.where(from_id: other_user_id) + received_messages.where(to_id: other_user_id)).uniq.sort_by {|m| m[:created_at]}
   end
 
 end
