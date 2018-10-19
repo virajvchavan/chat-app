@@ -5,11 +5,11 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    user = User.new(username: params[:username])
+    user = User.find_or_initialize_by(username: params[:username])
     if user.save
-      render json: { message: 'saved user' }
+      render json: { id: user.id }
     else
-      render json: { message: 'error saving user' }
+      render json: { id: nil }
     end
   end
 
