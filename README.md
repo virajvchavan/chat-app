@@ -1,6 +1,8 @@
 An API-only Rails app to be used for building a React app.
 (Deployed here: http://chat-app-rails-api.herokuapp.com/)
 
+See the API in action here: http://react-chat-demo.herokuapp.com/
+
 API will be used for chatting between users.
 
 Some realtime messaging service like PubNub to be used.
